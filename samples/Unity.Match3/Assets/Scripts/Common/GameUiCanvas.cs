@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Common.GameModes;
 using Common.Interfaces;
 using Common.Models;
 using Common.UiElements;
@@ -27,6 +28,7 @@ namespace Common
             _iconsSetDropdown.AddItems(_appContext.Resolve<IconsSetModel[]>().Select(iconsSet => iconsSet.Name));
             _fillStrategyDropdown.AddItems(_appContext.Resolve<IBoardFillStrategy<IUnityGridSlot>[]>()
                 .Select(strategy => strategy.Name));
+            OnStartGameButtonClick();
         }
 
         private void OnEnable()
@@ -43,7 +45,7 @@ namespace Common
 
         public void ShowMessage(string message)
         {
-            Debug.Log(message);
+            //Debug.Log(message);
         }
 
         public void RegisterAchievedGoal(LevelGoal<IUnityGridSlot> achievedGoal)

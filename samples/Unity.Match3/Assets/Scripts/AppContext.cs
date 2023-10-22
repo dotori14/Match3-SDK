@@ -85,7 +85,8 @@ public class AppContext : MonoBehaviour, IAppContext
         return new ISequenceDetector<IUnityGridSlot>[]
         {
             new VerticalLineDetector<IUnityGridSlot>(),
-            new HorizontalLineDetector<IUnityGridSlot>()
+            new HorizontalLineDetector<IUnityGridSlot>(),
+            new SquareShapeDetector()
         };
     }
 
@@ -110,8 +111,8 @@ public class AppContext : MonoBehaviour, IAppContext
     {
         return new IBoardFillStrategy<IUnityGridSlot>[]
         {
-            new SimpleFillStrategy(this),
-            new FallDownFillStrategy(this),
+            //new SimpleFillStrategy(this),
+            //new FallDownFillStrategy(this),
             new SlideDownFillStrategy(this)
         };
     }

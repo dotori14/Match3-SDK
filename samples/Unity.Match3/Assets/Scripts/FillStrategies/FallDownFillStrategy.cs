@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Common;
 using Common.Extensions;
 using Common.Interfaces;
 using FillStrategies.Jobs;
@@ -20,6 +21,9 @@ namespace FillStrategies
         public override IEnumerable<IJob> GetSolveJobs(IGameBoard<IUnityGridSlot> gameBoard,
             SolvedData<IUnityGridSlot> solvedData)
         {
+            //if (CanvasInputSystem.instance.BOMB.isPlaying == false)
+            //    CanvasInputSystem.instance.BOMB.Play();
+
             var jobs = new List<IJob>();
             var itemsToHide = new List<IUnityItem>();
             var solvedGridSlots = new HashSet<IUnityGridSlot>();

@@ -13,6 +13,9 @@ namespace Common
         public async UniTask SwapItemsAsync(IUnityGridSlot gridSlot1, IUnityGridSlot gridSlot2,
             CancellationToken cancellationToken = default)
         {
+            if (CanvasInputSystem.instance.SLIDE.isPlaying == false)
+                CanvasInputSystem.instance.SLIDE.Play();
+
             var item1 = gridSlot1.Item;
             var item2 = gridSlot2.Item;
 

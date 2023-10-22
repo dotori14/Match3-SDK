@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Common;
 using Common.Extensions;
 using Common.Interfaces;
 using FillStrategies.Jobs;
@@ -7,6 +8,7 @@ using FillStrategies.Models;
 using Match3.App;
 using Match3.App.Interfaces;
 using Match3.Core.Structs;
+using UnityEngine;
 
 namespace FillStrategies
 {
@@ -21,12 +23,22 @@ namespace FillStrategies
         public override IEnumerable<IJob> GetSolveJobs(IGameBoard<IUnityGridSlot> gameBoard,
             SolvedData<IUnityGridSlot> solvedData)
         {
+            if (CanvasInputSystem.instance.BOMB.isPlaying == false)
+                CanvasInputSystem.instance.BOMB.Play();
+            // Á¡¼öÀÛ
+            foreach (var sequence in solvedData.SolvedSequences)
+            {
+                CanvasInputSystem.instance.SetScore(sequence.SolvedGridSlots.Count);
+                //Debug.Log(CanvasInputSystem.instance.score);
+            }
+
             var jobs = new List<IJob>();
             var itemsToHide = new List<IUnityItem>();
             var solvedGridSlots = new HashSet<IUnityGridSlot>();
 
             foreach (var solvedGridSlot in solvedData.GetSolvedGridSlots())
             {
+      
                 if (solvedGridSlot.IsMovable == false)
                 {
                     continue;

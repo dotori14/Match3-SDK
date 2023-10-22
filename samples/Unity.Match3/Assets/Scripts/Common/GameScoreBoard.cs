@@ -18,7 +18,12 @@ namespace Common
 
         private void RegisterSequenceScore(ItemSequence<IUnityGridSlot> sequence)
         {
-            Debug.Log(GetSequenceDescription(sequence));
+            if (CanvasInputSystem.instance.BOMB.isPlaying == false)
+                CanvasInputSystem.instance.BOMB.Play();
+            // 점수 카운트
+            //CanvasInputSystem.instance.score += sequence.SolvedGridSlots.Count;
+            //Debug.Log(CanvasInputSystem.instance.score);
+            //Debug.Log(GetSequenceDescription(sequence));
         }
 
         private string GetSequenceDescription(ItemSequence<IUnityGridSlot> sequence)

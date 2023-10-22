@@ -215,7 +215,6 @@ namespace Common
             {
                 return;
             }
-
             Array.Clear(_gameBoardSlots, 0, _gameBoardSlots.Length);
             _gameBoardSlots = null;
         }

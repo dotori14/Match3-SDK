@@ -81,6 +81,10 @@ namespace Match3.App
             {
                 NotifySequencesSolved(solvedData);
                 await _jobsExecutor.ExecuteJobsAsync(fillStrategy.GetSolveJobs(GameBoard, solvedData), cancellationToken);
+                while (IsSolveExistOnBoard(out solvedData))
+                {
+                    await _jobsExecutor.ExecuteJobsAsync(fillStrategy.GetSolveJobs(GameBoard, solvedData), cancellationToken);
+                }
             }
             else
             {

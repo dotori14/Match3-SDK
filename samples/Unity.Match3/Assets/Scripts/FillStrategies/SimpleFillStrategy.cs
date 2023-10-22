@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Common;
 using Common.Interfaces;
 using FillStrategies.Jobs;
 using Match3.App;
@@ -18,6 +19,9 @@ namespace FillStrategies
         public override IEnumerable<IJob> GetSolveJobs(IGameBoard<IUnityGridSlot> gameBoard,
             SolvedData<IUnityGridSlot> solvedData)
         {
+            //if (CanvasInputSystem.instance.BOMB.isPlaying == false)
+            //    CanvasInputSystem.instance.BOMB.Play();
+
             var itemsToHide = new List<IUnityItem>();
             var itemsToShow = new List<IUnityItem>();
 
